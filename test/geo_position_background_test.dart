@@ -5,7 +5,6 @@ import 'package:geo_position_background/geo_position_background.dart';
 import 'package:geo_position_background/channels/interfaces/geo_position_background_platform_interface.dart';
 import 'package:geo_position_background/channels/geo_position_background_channel.dart';
 import 'package:geo_position_background/models/config.dart';
-import 'package:geo_position_background/models/location.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 class MockGeoPositionBackgroundPlatform

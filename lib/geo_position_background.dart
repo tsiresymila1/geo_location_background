@@ -1,11 +1,11 @@
 
 import 'dart:async';
 
+import 'package:geo_position_background/models/config.dart';
 import 'package:geo_position_background/models/location.dart';
 import 'package:permission_handler/permission_handler.dart';
-
 import 'channels/interfaces/geo_position_background_platform_interface.dart';
-import 'models/config.dart';
+
 typedef LocationChangeLister = Function(Location location);
 
 base class GeoPositionBackground {
@@ -18,7 +18,7 @@ base class GeoPositionBackground {
   Future<bool?> start() async {
     if(!await Permission.location.request().isGranted){
       return false;
-    };
+    }
     return await GeoPositionBackgroundPlatform.instance.start();
   }
   /// stop service location tracking.

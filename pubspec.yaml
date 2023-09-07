@@ -1,7 +1,7 @@
 name: geo_position_background
 description: Flutter package to track background location
 version: 0.0.1
-homepage:
+homepage: https://github.com/tsiresymila1/geo_location_background.git
 
 environment:
   sdk: '>=3.1.0 <4.0.0'
