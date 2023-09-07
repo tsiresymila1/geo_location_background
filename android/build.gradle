@@ -1,0 +1,82 @@
+group 'ts.mila.geo_position_background'
+version '1.0'
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        maven{
+            url 'https://oss.sonatype.org/content/repositories/snapshots/'
+        }
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.4.2'
+        classpath "io.realm:realm-gradle-plugin:10.16.1"
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven{
+            url 'https://oss.sonatype.org/content/repositories/snapshots/'
+        }
+        jcenter()
+    }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'realm-android'
+
+
+android {
+    if (project.android.hasProperty("namespace")) {
+        namespace 'ts.mila.geo_position_background'
+    }
+
+    compileSdk 33
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        minSdkVersion 19
+    }
+
+    dependencies {
+        def core_version = "1.9.0"
+        testImplementation 'junit:junit:4.13.2'
+        testImplementation 'org.mockito:mockito-core:5.0.0'
+
+        //noinspection GradleDependency
+        implementation "androidx.core:core:$core_version"
+        implementation "androidx.localbroadcastmanager:localbroadcastmanager:1.1.0"
+        // GMS
+        implementation 'com.google.android.gms:play-services-maps:18.1.0'
+        implementation 'com.google.android.gms:play-services-location:21.0.1'
+
+        // retrofit
+        implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+        implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+
+        // realm
+//        implementation 'io.realm:android-adapters:3.1.0'
+//        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.22"
+
+    }
+
+    testOptions {
+        unitTests.all {
+            testLogging {
+               events "passed", "skipped", "failed", "standardOut", "standardError"
+               outputs.upToDateWhen {false}
+               showStandardStreams = true
+            }
+        }
+    }
+}
